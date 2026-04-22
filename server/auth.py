@@ -1,7 +1,8 @@
 import jwt
 import time
+import hashlib
+import secrets
 from typing import Optional
-from passlib.hash import bcrypt
 
 SECRET = "ios_wx_secret_key_change_in_production"
 ALGORITHM = "HS256"
@@ -9,11 +10,14 @@ TOKEN_EXPIRE = 86400 * 30
 
 
 def hash_password(password: str) -> str:
-    return bcrypt.hash(password)
+    salt = secrets.token_hex(16)
+    h = hashlib.sha256((salt + password).encode()).hexdigest()
+    return f"{salt}${h}"
 
 
 def verify_password(password: str, hashed: str) -> bool:
-    return bcrypt.verify(password, hashed)
+    salt, h = hashed.split("$", 1)
+    return hashlib.sha256((salt + password).encode()).hexdigest() == h
 
 
 def create_token(user_id: int) -> str:
