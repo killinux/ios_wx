@@ -1,5 +1,6 @@
 import jwt
 import time
+from typing import Optional
 from passlib.hash import bcrypt
 
 SECRET = "ios_wx_secret_key_change_in_production"
@@ -20,7 +21,7 @@ def create_token(user_id: int) -> str:
     return jwt.encode(payload, SECRET, algorithm=ALGORITHM)
 
 
-def decode_token(token: str) -> int | None:
+def decode_token(token: str) -> Optional[int]:
     try:
         payload = jwt.decode(token, SECRET, algorithms=[ALGORITHM])
         return payload["uid"]

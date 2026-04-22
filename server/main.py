@@ -6,7 +6,8 @@ import json
 import time
 import asyncio
 from contextlib import asynccontextmanager
-from typing import Optional
+from __future__ import annotations
+from typing import Optional, Dict, List
 
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect, HTTPException, Depends, Query
 from fastapi.middleware.cors import CORSMiddleware
