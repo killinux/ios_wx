@@ -1,12 +1,8 @@
-"""
-微信 iOS 后端 — FastAPI + WebSocket + HTTP 轮询兜底
-启动: uvicorn main:app --host 0.0.0.0 --port 8080
-"""
+from __future__ import annotations
 import json
 import time
 import asyncio
 from contextlib import asynccontextmanager
-from __future__ import annotations
 from typing import Optional, Dict, List
 
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect, HTTPException, Depends, Query
