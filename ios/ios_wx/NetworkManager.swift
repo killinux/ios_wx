@@ -4,7 +4,7 @@ import Combine
 class NetworkManager: ObservableObject {
     static let shared = NetworkManager()
 
-    let baseURL = "http://49.233.189.223:8080"
+    let baseURL = "http://49.233.189.223:8086"
     var wsURL: String { baseURL.replacingOccurrences(of: "http", with: "ws") + "/ws" }
 
     @Published var token: String = UserDefaults.standard.string(forKey: "token") ?? ""
