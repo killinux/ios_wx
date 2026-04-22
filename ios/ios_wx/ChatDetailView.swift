@@ -150,9 +150,10 @@ struct MessageBubble: View {
 
             VStack(alignment: isMe ? .trailing : .leading, spacing: 2) {
                 Text(message.text)
+                    .foregroundColor(.black)
                     .padding(.horizontal, 12)
                     .padding(.vertical, 8)
-                    .background(isMe ? Color(red: 0.58, green: 0.89, blue: 0.38) : .white)
+                    .background(isMe ? Color(red: 0.58, green: 0.89, blue: 0.38) : Color(white: 0.95))
                     .clipShape(RoundedRectangle(cornerRadius: 8))
                     .shadow(color: .black.opacity(0.05), radius: 1, y: 1)
 
